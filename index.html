@@ -10,25 +10,25 @@
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#ffffff; --bg-light:#f8faff; --ink:#1a1a2e; --muted:#5a6072; --line:#e5e9f2;
-  --heat-purple:#6d1b6e; --heat-red:#d61f48; --heat-orange:#f0820a; --heat-amber:#f7b733;
+  --bg:#ffffff; --bg-light:#f8faff; --ink:#1a1a2e; --navy:#1a1a4e; --muted:#5a6072; --line:#e5e9f2;
+  --blue:#1E88E5; --blue-light:#7ecfff; --blue-pale:#f0f5ff;
   --ego:#13c7df;
-  --risk:linear-gradient(115deg,#6d1b6e 0%,#d61f48 38%,#f0820a 72%,#f7b733 100%);
+  --risk:linear-gradient(115deg,#1a1a4e 0%,#1E88E5 60%,#7ecfff 100%);
   --maxw:1080px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"Spectral",Georgia,serif;font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased;}
 h1,h2,h3,.disp{font-family:"Sora",system-ui,sans-serif;letter-spacing:-0.02em;}
-a{color:var(--heat-red);text-decoration:none;transition:color .2s}
-a:hover{color:var(--heat-orange)}
+a{color:var(--blue);text-decoration:none;transition:color .2s}
+a:hover{color:var(--navy)}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
-.eyebrow{font-family:"Sora";font-weight:600;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--heat-orange);}
+.eyebrow{font-family:"Sora";font-weight:600;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);}
 
 /* ---------- HERO (CARS-style: white, dark text) ---------- */
 .hero{background:var(--bg);padding:64px 0 44px;}
 .hero .wrap{text-align:center}
-.venue{display:inline-block;font-family:"Sora";font-weight:600;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--heat-orange);border:1px solid #f3d9b8;background:#fff8ef;border-radius:100px;padding:6px 14px;margin-bottom:24px}
+.venue{display:inline-block;font-family:"Sora";font-weight:600;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);border:1px solid #cfe4fb;background:var(--blue-pale);border-radius:100px;padding:6px 14px;margin-bottom:24px}
 .hero h1{font-size:clamp(1.35rem,2.9vw,1.95rem);font-weight:800;line-height:1.3;margin:0 auto 8px;color:var(--ink);}
 .hero .sub{font-family:"Sora";font-weight:500;color:var(--muted);font-size:1rem;letter-spacing:.01em;margin:16px auto 0;max-width:52ch}
 .authors{margin:26px auto 6px;font-family:"Sora";font-weight:500;color:var(--ink);font-size:1.02rem}
@@ -38,8 +38,8 @@ a:hover{color:var(--heat-orange)}
 .btn{display:inline-flex;align-items:center;gap:9px;font-family:"Sora";font-weight:600;font-size:.92rem;
   padding:11px 20px;border-radius:100px;background:var(--ink);color:#fff;border:1px solid var(--ink);transition:transform .15s,filter .2s}
 .btn:hover{transform:translateY(-2px);color:#fff;filter:brightness(1.25)}
-.btn.primary{background:var(--risk);color:#1a0c06;border:none;font-weight:700}
-.btn.primary:hover{color:#1a0c06;filter:brightness(1.06)}
+.btn.primary{background:var(--blue);color:#fff;border:none;font-weight:700}
+.btn.primary:hover{color:#fff;filter:brightness(1.1)}
 .btn svg{width:16px;height:16px;fill:currentColor}
 
 /* heat ribbon */
@@ -49,7 +49,7 @@ a:hover{color:var(--heat-orange)}
 section.block{padding:64px 0}
 section.block.alt{background:var(--bg-light);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 h2.title{font-size:clamp(1.4rem,2.4vw,1.9rem);font-weight:700;margin:6px 0 26px;line-height:1.2}
-h2.title .accent{background:var(--risk);-webkit-background-clip:text;background-clip:text;color:transparent}
+h2.title .accent{color:var(--blue)}
 .lead{max-width:760px}
 .abstract p{font-size:1.05rem}
 .note{color:var(--muted);font-size:.95rem}
@@ -57,7 +57,7 @@ h2.title .accent{background:var(--risk);-webkit-background-clip:text;background-
 /* figure cards */
 figure.card{margin:0;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;
   box-shadow:0 14px 34px -26px rgba(26,26,46,.35);transition:transform .25s,box-shadow .25s}
-figure.card:hover{transform:translateY(-4px);box-shadow:0 22px 44px -26px rgba(214,31,72,.28)}
+figure.card:hover{transform:translateY(-4px);box-shadow:0 22px 44px -26px rgba(30,136,229,.3)}
 figure.card img{display:block;width:100%;height:auto;background:#fff}
 figure.card figcaption{padding:13px 18px;font-size:.92rem;color:var(--muted);border-top:1px solid var(--line)}
 figure.card figcaption b{color:var(--ink);font-family:"Sora";font-weight:600}
@@ -70,7 +70,7 @@ figure.card figcaption b{color:var(--ink);font-family:"Sora";font-weight:600}
   box-shadow:0 14px 34px -26px rgba(26,26,46,.35)}
 .vid video{display:block;width:100%;height:auto;background:#fff}
 .vid .tag{position:absolute;top:12px;left:12px;z-index:3;font-family:"Sora";font-weight:600;font-size:.72rem;
-  letter-spacing:.04em;color:#1a0c06;background:var(--heat-amber);padding:5px 11px;border-radius:100px;box-shadow:0 2px 8px rgba(26,26,46,.18)}
+  letter-spacing:.04em;color:#fff;background:var(--blue);padding:5px 11px;border-radius:100px;box-shadow:0 2px 8px rgba(26,26,46,.18)}
 .vid .cap{padding:12px 16px;color:var(--muted);font-size:.9rem;font-family:"Sora";border-top:1px solid var(--line)}
 .vid .cap b{color:var(--ink);font-weight:600}
 
@@ -86,22 +86,26 @@ th,td{padding:11px 16px;text-align:right;border-bottom:1px solid var(--line)}
 th:first-child,td:first-child{text-align:left}
 thead th{font-weight:600;color:var(--muted);font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;background:var(--bg-light)}
 tbody tr:last-child td{border-bottom:none}
-tr.ours{background:linear-gradient(90deg,rgba(247,183,51,.18),rgba(214,31,72,.06))}
+tr.ours{background:var(--blue-pale)}
 tr.ours td:first-child{font-weight:700}
-.win{color:var(--heat-red);font-weight:700}
+.win{color:var(--blue);font-weight:700}
 td .b{font-weight:700;color:var(--ink)}
 
 /* steps */
 .steps{counter-reset:s;display:grid;gap:16px;margin-top:10px}
 .step{display:flex;gap:16px;align-items:flex-start}
-.step .n{flex:0 0 auto;width:34px;height:34px;border-radius:10px;background:var(--risk);color:#1a0c06;
+.step .n{flex:0 0 auto;width:34px;height:34px;border-radius:10px;background:var(--blue);color:#fff;
   font-family:"Sora";font-weight:700;display:grid;place-items:center}
 .step b{font-family:"Sora";font-weight:600}
 
 /* bibtex */
 pre.bib{background:#13131f;color:#e9e6f2;border-radius:14px;padding:22px 24px;overflow:auto;
   font-family:"JetBrains Mono",monospace;font-size:.86rem;line-height:1.6;border:1px solid #2a2a3e}
-pre.bib .k{color:var(--heat-amber)} pre.bib .s{color:#8fd6c0}
+pre.bib .k{color:var(--blue-light)} pre.bib .s{color:#8fd6c0}
+
+/* abstract: centred block, justified text (CARS-style) */
+.abs-center .wrap{text-align:center}
+.abs-center .abstract{margin:0 auto;text-align:justify}
 
 /* reveal */
 .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
@@ -131,7 +135,7 @@ footer a{color:var(--ink)}
 <div class="ribbon"></div>
 
 <!-- ABSTRACT -->
-<section class="block">
+<section class="block abs-center">
   <div class="wrap reveal">
     <span class="eyebrow">Abstract</span>
     <h2 class="title">A risk field that <span class="accent">forecasts</span>, not just reacts.</h2>
