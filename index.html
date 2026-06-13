@@ -95,6 +95,9 @@ tr.ours{background:var(--blue-pale)}
 tr.ours td:first-child{font-weight:700}
 .win{color:var(--blue);font-weight:700}
 td .b{font-weight:700;color:var(--ink)}
+table.merged th,table.merged td{padding:9px 12px;font-size:.84rem}
+table.merged thead th[colspan]{text-align:center;border-bottom:1px solid var(--line)}
+table.merged td.grp,table.merged th.grp{border-left:1px solid var(--line)}
 
 /* steps */
 .steps{counter-reset:s;display:grid;gap:16px;margin-top:10px}
@@ -222,44 +225,45 @@ footer a{color:var(--ink)}
     <span class="eyebrow">Conflict detection</span>
     <h2 class="title">Best AP on <span class="accent">all three</span> traffic regimes.</h2>
     <p class="lead note">Surrogate-conflict detection against a handcrafted kinematic safety field (DSF), a TTC baseline, and PORA-style occupancy-overlap on the <em>same</em> predicted densities — on intersections (InD), congested highway (AD4CHE), and roundabouts (rounD). Higher is better; AP is the informative metric under class imbalance. <b>Lead (s)</b> is the early-warning lead time at a 10% false-alarm rate; the single-shot scalar baselines (DSF, TTC) produce no temporal warning (&mdash;).</p>
-    <div class="feature" style="margin-top:24px">
-      <div class="tbl-wrap">
-        <table>
-          <caption><b>InD</b> — intersections (2,561 scenes).</caption>
-          <thead><tr><th>Method</th><th>AUROC</th><th>AP</th><th>Lead (s)</th></tr></thead>
-          <tbody>
-            <tr class="ours"><td>Ours (prob.)</td><td>0.642</td><td><span class="b">0.166</span></td><td><span class="b">0.42</span></td></tr>
-            <tr><td>DSF (handcrafted)</td><td>0.665</td><td>0.149</td><td>&mdash;</td></tr>
-            <tr><td>TTC</td><td><span class="b">0.678</span></td><td>0.161</td><td>&mdash;</td></tr>
-            <tr><td>PORA-style</td><td>0.607</td><td>0.141</td><td>&minus;0.04</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="tbl-wrap">
-        <table>
-          <caption><b>AD4CHE</b> — congested highway (9.4% conflicts).</caption>
-          <thead><tr><th>Method</th><th>AUROC</th><th>AP</th><th>Lead (s)</th></tr></thead>
-          <tbody>
-            <tr class="ours"><td>Ours (energy)</td><td>0.585</td><td><span class="b">0.162</span></td><td><span class="b">1.40</span></td></tr>
-            <tr class="ours"><td>Ours (prob.)</td><td><span class="b">0.596</span></td><td>0.148</td><td>0.05</td></tr>
-            <tr><td>DSF (handcrafted)</td><td>0.518</td><td>0.096</td><td>&mdash;</td></tr>
-            <tr><td>TTC</td><td>0.493</td><td>0.097</td><td>&mdash;</td></tr>
-            <tr><td>PORA-style</td><td>0.551</td><td>0.139</td><td>0.14</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="tbl-wrap">
-        <table>
-          <caption><b>rounD</b> — roundabout (33.9% conflicts).</caption>
-          <thead><tr><th>Method</th><th>AUROC</th><th>AP</th><th>Lead (s)</th></tr></thead>
-          <tbody>
-            <tr class="ours"><td>Ours (prob.)</td><td><span class="b">0.621</span></td><td><span class="b">0.442</span></td><td><span class="b">1.22</span></td></tr>
-            <tr><td>DSF (handcrafted)</td><td>0.559</td><td>0.361</td><td>&mdash;</td></tr>
-            <tr><td>TTC</td><td>0.508</td><td>0.343</td><td>&mdash;</td></tr>
-            <tr><td>PORA-style</td><td>0.574</td><td>0.376</td><td>0.54</td></tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="tbl-wrap" style="margin-top:24px">
+      <table class="merged">
+        <caption>Surrogate-conflict detection across three regimes — <b>InD</b> intersections (2,561 scenes, 8.5% conflicts), <b>AD4CHE</b> congested highway (787, 9.4%), <b>rounD</b> roundabouts (498, 33.9%). Best per column in bold.</caption>
+        <thead>
+          <tr>
+            <th rowspan="2">Method</th>
+            <th colspan="3" class="grp">InD &middot; intersections</th>
+            <th colspan="3" class="grp">AD4CHE &middot; highway</th>
+            <th colspan="3" class="grp">rounD &middot; roundabout</th>
+          </tr>
+          <tr>
+            <th class="grp">AUROC</th><th>AP</th><th>Lead</th>
+            <th class="grp">AUROC</th><th>AP</th><th>Lead</th>
+            <th class="grp">AUROC</th><th>AP</th><th>Lead</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>DSF (handcrafted)</td>
+            <td class="grp">0.665</td><td>0.149</td><td>&mdash;</td>
+            <td class="grp">0.518</td><td>0.096</td><td>&mdash;</td>
+            <td class="grp">0.559</td><td>0.361</td><td>&mdash;</td></tr>
+          <tr><td>TTC</td>
+            <td class="grp"><span class="b">0.678</span></td><td>0.161</td><td>&mdash;</td>
+            <td class="grp">0.493</td><td>0.097</td><td>&mdash;</td>
+            <td class="grp">0.508</td><td>0.343</td><td>&mdash;</td></tr>
+          <tr><td>PORA-style</td>
+            <td class="grp">0.607</td><td>0.141</td><td>&minus;0.04</td>
+            <td class="grp">0.551</td><td>0.139</td><td>0.14</td>
+            <td class="grp">0.574</td><td>0.376</td><td>0.54</td></tr>
+          <tr class="ours"><td>Ours (energy)</td>
+            <td class="grp">0.645</td><td>0.130</td><td>0.23</td>
+            <td class="grp">0.585</td><td><span class="b">0.162</span></td><td><span class="b">1.40</span></td>
+            <td class="grp">0.579</td><td>0.376</td><td>0.57</td></tr>
+          <tr class="ours"><td>Ours (prob.)</td>
+            <td class="grp">0.642</td><td><span class="b">0.166</span></td><td><span class="b">0.42</span></td>
+            <td class="grp"><span class="b">0.596</span></td><td>0.148</td><td>0.05</td>
+            <td class="grp"><span class="b">0.621</span></td><td><span class="b">0.442</span></td><td><span class="b">1.22</span></td></tr>
+        </tbody>
+      </table>
     </div>
     <p class="note" style="margin-top:18px">Our field wins the metrics that matter under imbalance — best <b>AP</b> on <b>all three</b> structurally different regimes and the best early-warning lead — with the <span class="win">largest margins in congested and roundabout traffic</span>, where constant-velocity assumptions break down. It is also the only method that yields a probabilistic field, a severity, and a physically grounded counterfactual.</p>
   </div>
