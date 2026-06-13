@@ -221,42 +221,42 @@ footer a{color:var(--ink)}
   <div class="wrap reveal">
     <span class="eyebrow">Conflict detection</span>
     <h2 class="title">Best AP on <span class="accent">all three</span> traffic regimes.</h2>
-    <p class="lead note">Surrogate-conflict detection against a handcrafted kinematic safety field (DSF), a TTC baseline, and PORA-style occupancy-overlap on the <em>same</em> predicted densities — on intersections (InD), congested highway (AD4CHE), and roundabouts (rounD). Higher is better; AP is the informative metric under class imbalance.</p>
+    <p class="lead note">Surrogate-conflict detection against a handcrafted kinematic safety field (DSF), a TTC baseline, and PORA-style occupancy-overlap on the <em>same</em> predicted densities — on intersections (InD), congested highway (AD4CHE), and roundabouts (rounD). Higher is better; AP is the informative metric under class imbalance. <b>Lead (s)</b> is the early-warning lead time at a 10% false-alarm rate; the single-shot scalar baselines (DSF, TTC) produce no temporal warning (&mdash;).</p>
     <div class="feature" style="margin-top:24px">
       <div class="tbl-wrap">
         <table>
           <caption><b>InD</b> — intersections (2,561 scenes).</caption>
-          <thead><tr><th>Method</th><th>AUROC</th><th>AP</th></tr></thead>
+          <thead><tr><th>Method</th><th>AUROC</th><th>AP</th><th>Lead (s)</th></tr></thead>
           <tbody>
-            <tr class="ours"><td>Ours (prob.)</td><td>0.642</td><td><span class="b">0.166</span></td></tr>
-            <tr><td>DSF (handcrafted)</td><td>0.665</td><td>0.149</td></tr>
-            <tr><td>TTC</td><td><span class="b">0.678</span></td><td>0.161</td></tr>
-            <tr><td>PORA-style</td><td>0.607</td><td>0.141</td></tr>
+            <tr class="ours"><td>Ours (prob.)</td><td>0.642</td><td><span class="b">0.166</span></td><td><span class="b">0.42</span></td></tr>
+            <tr><td>DSF (handcrafted)</td><td>0.665</td><td>0.149</td><td>&mdash;</td></tr>
+            <tr><td>TTC</td><td><span class="b">0.678</span></td><td>0.161</td><td>&mdash;</td></tr>
+            <tr><td>PORA-style</td><td>0.607</td><td>0.141</td><td>&minus;0.04</td></tr>
           </tbody>
         </table>
       </div>
       <div class="tbl-wrap">
         <table>
           <caption><b>AD4CHE</b> — congested highway (9.4% conflicts).</caption>
-          <thead><tr><th>Method</th><th>AUROC</th><th>AP</th></tr></thead>
+          <thead><tr><th>Method</th><th>AUROC</th><th>AP</th><th>Lead (s)</th></tr></thead>
           <tbody>
-            <tr class="ours"><td>Ours (energy)</td><td>0.585</td><td><span class="b">0.162</span></td></tr>
-            <tr class="ours"><td>Ours (prob.)</td><td><span class="b">0.596</span></td><td>0.148</td></tr>
-            <tr><td>DSF (handcrafted)</td><td>0.518</td><td>0.096</td></tr>
-            <tr><td>TTC</td><td>0.493</td><td>0.097</td></tr>
-            <tr><td>PORA-style</td><td>0.551</td><td>0.139</td></tr>
+            <tr class="ours"><td>Ours (energy)</td><td>0.585</td><td><span class="b">0.162</span></td><td><span class="b">1.40</span></td></tr>
+            <tr class="ours"><td>Ours (prob.)</td><td><span class="b">0.596</span></td><td>0.148</td><td>0.05</td></tr>
+            <tr><td>DSF (handcrafted)</td><td>0.518</td><td>0.096</td><td>&mdash;</td></tr>
+            <tr><td>TTC</td><td>0.493</td><td>0.097</td><td>&mdash;</td></tr>
+            <tr><td>PORA-style</td><td>0.551</td><td>0.139</td><td>0.14</td></tr>
           </tbody>
         </table>
       </div>
       <div class="tbl-wrap">
         <table>
           <caption><b>rounD</b> — roundabout (33.9% conflicts).</caption>
-          <thead><tr><th>Method</th><th>AUROC</th><th>AP</th></tr></thead>
+          <thead><tr><th>Method</th><th>AUROC</th><th>AP</th><th>Lead (s)</th></tr></thead>
           <tbody>
-            <tr class="ours"><td>Ours (prob.)</td><td><span class="b">0.621</span></td><td><span class="b">0.442</span></td></tr>
-            <tr><td>DSF (handcrafted)</td><td>0.559</td><td>0.361</td></tr>
-            <tr><td>TTC</td><td>0.508</td><td>0.343</td></tr>
-            <tr><td>PORA-style</td><td>0.574</td><td>0.376</td></tr>
+            <tr class="ours"><td>Ours (prob.)</td><td><span class="b">0.621</span></td><td><span class="b">0.442</span></td><td><span class="b">1.22</span></td></tr>
+            <tr><td>DSF (handcrafted)</td><td>0.559</td><td>0.361</td><td>&mdash;</td></tr>
+            <tr><td>TTC</td><td>0.508</td><td>0.343</td><td>&mdash;</td></tr>
+            <tr><td>PORA-style</td><td>0.574</td><td>0.376</td><td>0.54</td></tr>
           </tbody>
         </table>
       </div>
