@@ -299,6 +299,7 @@ footer a{color:var(--ink)}
         </tbody>
       </table>
     </div>
+    <figure class="card" style="margin-top:22px"><img src="static/images/pet_sweep.png" alt="Detection robustness across PET thresholds" loading="lazy"/><figcaption><b>Robust to the threshold.</b> AUROC (top) and AP (bottom) vs. the PET conflict threshold (strict 0.5 &rarr; loose 1.5&#8202;s), per dataset. The pattern is invariant: TTC leads on InD at every threshold, while <b>Ours (prob.)</b> leads AUROC and AP on AD4CHE and rounD at every threshold (TTC near chance) — the advantage reflects the traffic regime, not a tuned label.</figcaption></figure>
     <p class="note" style="margin-top:18px">Our field wins <b>both AUROC and AP</b> on the <span class="win">congested-highway and roundabout regimes</span> — exactly where constant-velocity kinematics break down — and beats the same-backbone occupancy baseline (PORA) everywhere. On smooth, low-speed InD intersections, motion is so constant-velocity-predictable that a kinematic TTC baseline is near-optimal; our field stays competitive there and gives the best early warning. And unlike any baseline, it also yields a probabilistic field, a physical severity, an early-warning lead, and a physically grounded counterfactual.</p>
   </div>
 </section>
