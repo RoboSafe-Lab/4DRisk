@@ -257,11 +257,11 @@ footer a{color:var(--ink)}
 <section class="block">
   <div class="wrap reveal">
     <span class="eyebrow">Conflict detection</span>
-    <h2 class="title">Best AP on <span class="accent">all three</span> traffic regimes.</h2>
-    <p class="lead note">Surrogate-conflict detection against a handcrafted kinematic safety field (DSF), a TTC baseline, and PORA-style occupancy-overlap on the <em>same</em> predicted densities — on intersections (InD), congested highway (AD4CHE), and roundabouts (rounD). Higher is better; AP is the informative metric under class imbalance. <b>Lead (s)</b> is the early-warning lead time at a 10% false-alarm rate; the single-shot scalar baselines (DSF, TTC) produce no temporal warning (&mdash;).</p>
+    <h2 class="title">Wins where <span class="accent">kinematics break down</span>.</h2>
+    <p class="lead note">Detection against an <em>assumption-free</em> post-encroachment-time (PET) conflict label — a real recorded crossing, no constant-velocity extrapolation — vs. a handcrafted kinematic field (DSF), a TTC baseline, and PORA-style occupancy-overlap on the <em>same</em> predicted densities. Higher is better; AP is the informative metric under class imbalance. <b>Lead (s)</b> is the early-warning lead time at a 10% false-alarm rate; single-shot scalar baselines (DSF, TTC) give no temporal warning (&mdash;).</p>
     <div class="tbl-wrap" style="margin-top:24px">
       <table class="merged">
-        <caption>Surrogate-conflict detection across three regimes — <b>InD</b> intersections (2,561 scenes, 8.5% conflicts), <b>AD4CHE</b> congested highway (787, 9.4%), <b>rounD</b> roundabouts (498, 33.9%). Best per column in bold.</caption>
+        <caption>PET conflict detection across three regimes — <b>InD</b> intersections (2,561 scenes, 7.1% conflicts), <b>AD4CHE</b> congested highway (787, 7.9%), <b>rounD</b> roundabouts (498, 27.7%). Best per column in bold.</caption>
         <thead>
           <tr>
             <th rowspan="2">Method</th>
@@ -277,29 +277,29 @@ footer a{color:var(--ink)}
         </thead>
         <tbody>
           <tr><td>DSF (handcrafted)</td>
-            <td class="grp">0.665</td><td>0.149</td><td>&mdash;</td>
-            <td class="grp">0.518</td><td>0.096</td><td>&mdash;</td>
-            <td class="grp">0.559</td><td>0.361</td><td>&mdash;</td></tr>
+            <td class="grp">0.695</td><td>0.144</td><td>&mdash;</td>
+            <td class="grp">0.531</td><td>0.083</td><td>&mdash;</td>
+            <td class="grp">0.580</td><td>0.310</td><td>&mdash;</td></tr>
           <tr><td>TTC</td>
-            <td class="grp"><span class="b">0.678</span></td><td>0.161</td><td>&mdash;</td>
-            <td class="grp">0.493</td><td>0.097</td><td>&mdash;</td>
-            <td class="grp">0.508</td><td>0.343</td><td>&mdash;</td></tr>
+            <td class="grp"><span class="b">0.713</span></td><td><span class="b">0.160</span></td><td>&mdash;</td>
+            <td class="grp">0.512</td><td>0.087</td><td>&mdash;</td>
+            <td class="grp">0.533</td><td>0.302</td><td>&mdash;</td></tr>
           <tr><td>PORA-style</td>
-            <td class="grp">0.607</td><td>0.141</td><td>&minus;0.04</td>
-            <td class="grp">0.551</td><td>0.139</td><td>0.14</td>
-            <td class="grp">0.574</td><td>0.376</td><td>0.54</td></tr>
+            <td class="grp">0.613</td><td>0.126</td><td>&minus;0.29</td>
+            <td class="grp">0.553</td><td>0.128</td><td>0.03</td>
+            <td class="grp">0.565</td><td>0.312</td><td>&minus;0.06</td></tr>
           <tr class="ours"><td>Ours (energy)</td>
-            <td class="grp">0.645</td><td>0.130</td><td>0.23</td>
-            <td class="grp">0.585</td><td><span class="b">0.162</span></td><td><span class="b">1.40</span></td>
-            <td class="grp">0.579</td><td>0.376</td><td>0.57</td></tr>
+            <td class="grp">0.658</td><td>0.118</td><td>0.07</td>
+            <td class="grp">0.582</td><td>0.142</td><td><span class="b">0.91</span></td>
+            <td class="grp">0.574</td><td>0.309</td><td>&minus;0.54</td></tr>
           <tr class="ours"><td>Ours (prob.)</td>
-            <td class="grp">0.642</td><td><span class="b">0.166</span></td><td><span class="b">0.42</span></td>
-            <td class="grp"><span class="b">0.596</span></td><td>0.148</td><td>0.05</td>
-            <td class="grp"><span class="b">0.621</span></td><td><span class="b">0.442</span></td><td><span class="b">1.22</span></td></tr>
+            <td class="grp">0.659</td><td>0.155</td><td><span class="b">0.22</span></td>
+            <td class="grp"><span class="b">0.617</span></td><td><span class="b">0.143</span></td><td>&minus;0.10</td>
+            <td class="grp"><span class="b">0.613</span></td><td><span class="b">0.360</span></td><td><span class="b">0.55</span></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="note" style="margin-top:18px">Our field wins the metrics that matter under imbalance — best <b>AP</b> on <b>all three</b> structurally different regimes and the best early-warning lead — with the <span class="win">largest margins in congested and roundabout traffic</span>, where constant-velocity assumptions break down. It is also the only method that yields a probabilistic field, a severity, and a physically grounded counterfactual.</p>
+    <p class="note" style="margin-top:18px">Our field wins <b>both AUROC and AP</b> on the <span class="win">congested-highway and roundabout regimes</span> — exactly where constant-velocity kinematics break down — and beats the same-backbone occupancy baseline (PORA) everywhere. On smooth, low-speed InD intersections, motion is so constant-velocity-predictable that a kinematic TTC baseline is near-optimal; our field stays competitive there and gives the best early warning. And unlike any baseline, it also yields a probabilistic field, a physical severity, an early-warning lead, and a physically grounded counterfactual.</p>
   </div>
 </section>
 
