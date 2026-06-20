@@ -72,12 +72,15 @@ figure.card figcaption b{color:var(--ink);font-family:"Sora";font-weight:600}
 @media(max-width:760px){.grid2,.grid-vid,.grid-cf{grid-template-columns:1fr}}
 
 /* video cards */
-.vid{position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;
+.grid-vid,.grid-cf{align-items:stretch}
+.vid{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;
   box-shadow:0 14px 34px -26px rgba(26,26,46,.35)}
-.vid video{display:block;width:100%;height:auto;background:#fff}
+/* reserve a fixed box so autoplay videos align in a row before metadata loads
+   (all renders are 760x680 = 19/17); object-fit:cover fills it without bars */
+.vid video{display:block;width:100%;aspect-ratio:19/17;height:auto;object-fit:cover;background:#fff}
 .vid .tag{position:absolute;top:12px;left:12px;z-index:3;font-family:"Sora";font-weight:600;font-size:.72rem;
   letter-spacing:.04em;color:#fff;background:var(--blue);padding:5px 11px;border-radius:100px;box-shadow:0 2px 8px rgba(26,26,46,.18)}
-.vid .cap{padding:12px 16px;color:var(--muted);font-size:.9rem;font-family:"Sora";border-top:1px solid var(--line)}
+.vid .cap{flex:1 0 auto;padding:12px 16px;color:var(--muted);font-size:.9rem;font-family:"Sora";border-top:1px solid var(--line)}
 .vid .cap b{color:var(--ink);font-weight:600}
 
 /* feature row */
