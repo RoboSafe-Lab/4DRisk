@@ -132,8 +132,8 @@ footer a{color:var(--ink)}
     <span class="venue">Spatial-Temporal Risk Field · Autonomous Driving</span>
     <h1>World-Model-Conditioned <span class="hl">Normalizing Flows</span> for<br>Spatial-Temporal <span class="hl">Risk Assessment</span> of Autonomous Vehicles</h1>
     <p class="sub">An ego-centric risk field that is predictive over time, temporally coherent, interpretable, and counterfactual — built on exact, grid-evaluable occupancy densities.</p>
-    <p class="authors">Yuxin Zhang<span class="sep">·</span>Pan Li<span class="sep">·</span>Yizhuo Xiao<span class="sep">·</span>Yuzi Wang<span class="sep">·</span>Cheng Wang</p>
-    <p class="affil">RoboSafe Lab</p>
+    <p class="authors">Yuxin Zhang<sup>a</sup><span class="sep">·</span>Yizhuo Xiao<sup>b</sup><span class="sep">·</span>Ziyu Wang<sup>a</sup><span class="sep">·</span>Pan Li<sup>c</sup><span class="sep">·</span>Hubert P. H. Shum<sup>d</sup><span class="sep">·</span><b>Cheng Wang</b><sup>b</sup></p>
+    <p class="affil"><sup>a</sup>Jilin University<span class="sep">·</span><sup>b</sup>Heriot-Watt University<span class="sep">·</span><sup>c</sup>Tongji University<span class="sep">·</span><sup>d</sup>Durham University</p>
     <div class="btns">
       <a class="btn primary" href="#" aria-label="Paper"><svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zm8 1.5V8h4.5L14 3.5z"/></svg>Paper</a>
       <a class="btn" href="https://github.com/RoboSafe-Lab/3DRisk" aria-label="Code"><svg viewBox="0 0 24 24"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.1-.75.4-1.27.73-1.56-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.2-3.1-.12-.29-.52-1.46.11-3.05 0 0 .98-.31 3.2 1.18a11 11 0 0 1 5.82 0c2.22-1.49 3.2-1.18 3.2-1.18.63 1.59.23 2.76.11 3.05.75.81 1.2 1.84 1.2 3.1 0 4.43-2.7 5.4-5.26 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>Code</a>
@@ -183,9 +183,9 @@ footer a{color:var(--ink)}
       <figure class="card"><img src="static/images/ind_ncrit_risk.png" alt="InD low-speed crossing onto stopped traffic" loading="lazy"/><figcaption><b>InD · proximity &#8800; severity.</b> A low-speed turn onto a queue of stopped cars: the geometrically <em>tighter</em> near-miss (boxes momentarily touch) but only a 2.8&#8202;m/s closing speed, so the field stays modest (34&#8202;J). Energy tracks closing speed, not proximity.</figcaption></figure>
     </div>
     <div style="height:22px"></div>
-    <figure class="card"><img src="static/images/ad4che_site17_evo.png" alt="AD4CHE congested-highway risk evolution" loading="lazy"/><figcaption><b>AD4CHE · risk evolution (high-speed closing).</b> Three key frames (current → mid-horizon → peak): the ego car crawls in congestion (~3&#8202;m/s) while an oncoming vehicle closes at ~34&#8202;m/s; risk blooms to a sharp 1187&#8202;J peak at the forecast meeting point, then relaxes.</figcaption></figure>
+    <figure class="card"><img src="static/images/ad4che_site17_evo.png" alt="AD4CHE congested-highway risk evolution" loading="lazy"/><figcaption><b>AD4CHE · risk evolution (same-lane closing).</b> Three key frames (current → mid-horizon → peak): an ego truck (~6&#8202;m/s) closes the gap to a slower truck (~3&#8202;m/s) ahead in the same lane. In congestion the meeting probability is high but the closing speed is low, so the field builds to a modest 77&#8202;J peak at the forecast meeting point (t&#8202;=&#8202;0.93&#8202;s).</figcaption></figure>
     <div style="height:22px"></div>
-    <figure class="card"><img src="static/images/ad4che_site15_evo.png" alt="AD4CHE risk evolution, closing on near-static traffic" loading="lazy"/><figcaption><b>AD4CHE · risk evolution (closing on near-static traffic).</b> An ego car merging toward a near-stationary vehicle — risk peaks at 148&#8202;J and stays elevated as the ego keeps closing.</figcaption></figure>
+    <figure class="card"><img src="static/images/ad4che_site15_evo.png" alt="AD4CHE risk evolution, closing on near-static traffic" loading="lazy"/><figcaption><b>AD4CHE · risk evolution (closing on near-static traffic).</b> An ego car merging toward a near-stationary vehicle — risk peaks at 148&#8202;J (t&#8202;=&#8202;1.20&#8202;s) and stays elevated as the ego keeps closing.</figcaption></figure>
   </div>
 </section>
 
@@ -231,23 +231,23 @@ footer a{color:var(--ink)}
     <div style="margin-top:46px">
       <span class="eyebrow">Counterfactual</span>
       <h2 class="title">What if the ego <span class="accent">brakes</span>?</h2>
-      <p class="lead note">The same congested-highway scene, re-scored under three candidate ego maneuvers on the <em>identical</em> colorbar. Because the severity is collision kinetic energy, braking lowers it by the laws of mechanics — the risk field visibly shrinks under braking and grows under acceleration. Averaged over test scenes, braking cuts the aggregated risk by <b>11.6%</b> and accelerating raises it by <b>17.5%</b> — a causal what-if query that fixed-plan occupancy methods structurally cannot answer.</p>
+      <p class="lead note">The same AD4CHE conflict (an ego truck closing on a slower truck), re-scored under three candidate ego maneuvers on the <em>identical</em> colorbar. Because the severity is collision kinetic energy, braking lowers it by the laws of mechanics — the risk field visibly shrinks under braking and grows under acceleration. Averaged over 20 test scenes, braking cuts the aggregated risk by <b>12.7%</b> and accelerating raises it by <b>15.5%</b> — a causal what-if query that fixed-plan occupancy methods structurally cannot answer.</p>
       <div class="grid-cf" style="margin-top:20px">
         <div class="vid"><span class="tag">Brake &times;0.7</span>
           <video autoplay loop muted playsinline controls preload="metadata">
             <source src="static/videos/cf_brake.mp4" type="video/mp4" />
           </video>
-          <div class="cap"><b>Safest (A&#8902;).</b> Lower closing speed &rarr; peak energy drops to ~130&#8202;J.</div></div>
+          <div class="cap"><b>Safest (A&#8902;).</b> Lower closing speed &rarr; the field dims and shrinks (aggregated risk &minus;12.7% vs. maintain).</div></div>
         <div class="vid"><span class="tag">Maintain</span>
           <video autoplay loop muted playsinline controls preload="metadata">
             <source src="static/videos/cf_maintain.mp4" type="video/mp4" />
           </video>
-          <div class="cap"><b>Baseline.</b> Recorded ego speed &rarr; peak ~550&#8202;J.</div></div>
+          <div class="cap"><b>Baseline.</b> Recorded ego speed &rarr; the field at its factual intensity (reference).</div></div>
         <div class="vid"><span class="tag">Accelerate &times;1.3</span>
           <video autoplay loop muted playsinline controls preload="metadata">
             <source src="static/videos/cf_accel.mp4" type="video/mp4" />
           </video>
-          <div class="cap"><b>Riskiest.</b> Higher closing speed &rarr; peak ~1.4&#8202;kJ.</div></div>
+          <div class="cap"><b>Riskiest.</b> Higher closing speed &rarr; the field brightens and spreads (aggregated risk +15.5% vs. maintain).</div></div>
       </div>
     </div>
   </div>
@@ -311,7 +311,8 @@ footer a{color:var(--ink)}
     <pre class="bib">@article<span class="k">{3drisk2026</span>,
   title   = <span class="s">{World-Model-Conditioned Normalizing Flows for Spatial-Temporal
              Risk Assessment of Autonomous Vehicles}</span>,
-  author  = <span class="s">{RoboSafe Lab}</span>,
+  author  = <span class="s">{Yuxin Zhang and Yizhuo Xiao and Ziyu Wang and Pan Li and
+             Hubert P. H. Shum and Cheng Wang}</span>,
   journal = <span class="s">{Preprint}</span>,
   year    = <span class="s">{2026}</span>
 }</pre>
