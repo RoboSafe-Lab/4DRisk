@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>World-Model-Conditioned Normalizing Flows for Risk Assessment</title>
+<title>A Spatio-Temporal Probabilistic Risk Field for Autonomous Vehicles</title>
 <meta name="description" content="An ego-centric, predictive, counterfactual risk field built on world-model-conditioned normalizing flows for autonomous-vehicle safety assessment." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -133,7 +133,7 @@ footer a{color:var(--ink)}
 <header class="hero">
   <div class="wrap">
     <span class="venue">Spatial-Temporal Risk Field · Autonomous Driving</span>
-    <h1>World-Model-Conditioned <span class="hl">Normalizing Flows</span> for<br>Spatial-Temporal <span class="hl">Risk Assessment</span> of Autonomous Vehicles</h1>
+    <h1>A <span class="hl">Spatio-Temporal Probabilistic Risk Field</span> for<br>Dynamic <span class="hl">Safety Assessment</span> of Autonomous Vehicles</h1>
     <p class="sub">An ego-centric risk field that is predictive over time, temporally coherent, interpretable, and counterfactual — built on exact, grid-evaluable occupancy densities.</p>
     <p class="authors">Yuxin Zhang<sup>a</sup><span class="sep">·</span>Yizhuo Xiao<sup>b</sup><span class="sep">·</span>Ziyu Wang<sup>a</sup><span class="sep">·</span>Pan Li<sup>c</sup><span class="sep">·</span>Hubert P. H. Shum<sup>d</sup><span class="sep">·</span><b>Cheng Wang</b><sup>b</sup></p>
     <p class="affil"><sup>a</sup>Jilin University<span class="sep">·</span><sup>b</sup>Heriot-Watt University<span class="sep">·</span><sup>c</sup>Tongji University<span class="sep">·</span><sup>d</sup>Durham University</p>
@@ -170,7 +170,7 @@ footer a{color:var(--ink)}
     <div class="steps">
       <div class="step"><div class="n">1</div><div><b>Exact occupancy.</b> A normalizing flow conditioned on the rolled-out latent gives a grid-evaluable density per future step, with no sampling or trajectory stitching.</div></div>
       <div class="step"><div class="n">2</div><div><b>Ego × others, coupled.</b> A single-target flow models the ego's occupancy; a scene-level autoregressive joint models the surrounding agents <em>conditioned on the ego</em>. Both read a BEV road map.</div></div>
-      <div class="step"><div class="n">3</div><div><b>Physically grounded risk.</b> Per cell: ego occupancy × oriented-box meeting probability × kinetic-energy severity (½&mu;&#8202;‖&Delta;v‖²), aggregated into a horizon-indexed risk tensor.</div></div>
+      <div class="step"><div class="n">3</div><div><b>Physically grounded risk.</b> Per cell: ego occupancy × oriented-box meeting probability × kinetic-energy severity (½&mu;&#8202;[max(0,&#8202;&Delta;v&middot;<b>u&#770;</b>)]², the <i>closing</i> speed along the line of sight), aggregated into a horizon-indexed risk tensor.</div></div>
     </div>
   </div>
 </section>
@@ -289,15 +289,15 @@ footer a{color:var(--ink)}
             <td class="grp">0.533</td><td>0.302</td><td>&mdash;</td></tr>
           <tr><td>PORA-style</td>
             <td class="grp">0.613</td><td>0.126</td><td>&minus;0.29</td>
-            <td class="grp">0.553</td><td>0.128</td><td>0.03</td>
+            <td class="grp">0.553</td><td>0.128</td><td>0.02</td>
             <td class="grp">0.565</td><td>0.312</td><td>&minus;0.06</td></tr>
           <tr class="ours"><td>Ours (energy)</td>
             <td class="grp">0.658</td><td>0.118</td><td>0.07</td>
-            <td class="grp">0.582</td><td>0.142</td><td><span class="b">0.91</span></td>
+            <td class="grp">0.582</td><td>0.142</td><td><span class="b">0.76</span></td>
             <td class="grp">0.574</td><td>0.309</td><td>&minus;0.54</td></tr>
           <tr class="ours"><td>Ours (prob.)</td>
             <td class="grp">0.659</td><td>0.155</td><td><span class="b">0.22</span></td>
-            <td class="grp"><span class="b">0.617</span></td><td><span class="b">0.143</span></td><td>&minus;0.10</td>
+            <td class="grp"><span class="b">0.617</span></td><td><span class="b">0.143</span></td><td>&minus;0.08</td>
             <td class="grp"><span class="b">0.613</span></td><td><span class="b">0.360</span></td><td><span class="b">0.55</span></td></tr>
         </tbody>
       </table>
@@ -312,8 +312,8 @@ footer a{color:var(--ink)}
     <span class="eyebrow">Citation</span>
     <h2 class="title">BibTeX</h2>
     <pre class="bib">@article<span class="k">{3drisk2026</span>,
-  title   = <span class="s">{World-Model-Conditioned Normalizing Flows for Spatial-Temporal
-             Risk Assessment of Autonomous Vehicles}</span>,
+  title   = <span class="s">{A Spatio-Temporal Probabilistic Risk Field for Dynamic
+             Safety Assessment of Autonomous Vehicles}</span>,
   author  = <span class="s">{Yuxin Zhang and Yizhuo Xiao and Ziyu Wang and Pan Li and
              Hubert P. H. Shum and Cheng Wang}</span>,
   journal = <span class="s">{Preprint}</span>,
