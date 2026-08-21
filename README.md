@@ -3,7 +3,7 @@
 Project page for **World-Model-Conditioned Normalizing Flows for Spatial-Temporal Risk Assessment of Autonomous Vehicles**.
 
 Static site (no build step). To publish: GitHub → **Settings → Pages → Source: deploy from branch → `main` / root**.
-Live at `https://robosafe-lab.github.io/3DRisk/`.
+Live at `https://robosafe-lab.github.io/4DRisk/`.
 
 - `index.html` — the page (self-contained: embedded CSS, Google Fonts CDN, vanilla JS).
 - `static/images/` — method + qualitative risk-field figures.
