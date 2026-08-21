@@ -1,4 +1,4 @@
-# 3DRisk — Project Page
+# 4DRisk — Project Page
 
 Project page for **World-Model-Conditioned Normalizing Flows for Spatial-Temporal Risk Assessment of Autonomous Vehicles**.
 
