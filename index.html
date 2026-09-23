@@ -153,7 +153,7 @@ footer a{color:var(--ink)}
     <h2 class="title">A risk field that <span class="accent">forecasts</span>, not just reacts.</h2>
     <div class="abstract lead">
       <p>Safety assessment of autonomous vehicles needs risk representations that are predictive, temporally coherent, interpretable, and able to answer <em>what-if</em> questions about the ego's own decisions. We propose an ego-centric risk field built on <b>world-model-conditioned normalizing flows</b>: a deterministic latent state rolled over the horizon conditions an invertible flow, giving an <b>exact, grid-evaluable occupancy density</b> without sampling.</p>
-      <p>The field couples two flows, a single-target model for the ego's occupancy and a scene-level <b>autoregressive joint</b> for the surrounding agents conditioned on the ego, both conditioned on a bird's-eye <b>map</b> of the road. Per-cell risk is the ego occupancy &times; an oriented bounding-box meeting probability &times; a physically grounded kinetic-energy severity, aggregated over agents into a horizon-indexed risk tensor. Evaluated on InD intersections, the congested-highway AD4CHE dataset, and rounD roundabouts under an assumption-free post-encroachment-time conflict label, the field detects conflicts competitively-to-better than kinematic and occupancy-overlap baselines, with the largest margins in congested and roundabout traffic, and warns earlier. It also supports a <b>physically grounded counterfactual</b> over candidate ego maneuvers, grounded in mechanics rather than a learned reaction, that fixed-plan occupancy methods structurally lack.</p>
+      <p>The field couples two flows, a single-target model for the ego's occupancy and a scene-level <b>autoregressive joint</b> for the surrounding agents conditioned on the ego, both conditioned on a bird's-eye <b>map</b> of the road. Per-cell risk is the ego occupancy &times; an oriented bounding-box meeting probability &times; a physically grounded kinetic-energy severity, aggregated over agents into a horizon-indexed risk tensor. Evaluated on InD intersections, the congested-highway AD4CHE dataset, and rounD roundabouts under an assumption-free post-encroachment-time conflict label, the field detects conflicts competitively-to-better than kinematic and occupancy-overlap baselines, with the largest margins in congested and roundabout traffic, and warns more of them before they begin once every method is charged for its own false alarms. It also supports a <b>physically grounded counterfactual</b> over candidate ego maneuvers, grounded in mechanics rather than a learned reaction, that fixed-plan occupancy methods structurally lack.</p>
     </div>
   </div>
 </section>
@@ -187,6 +187,8 @@ footer a{color:var(--ink)}
     </div>
     <div style="height:22px"></div>
     <figure class="card"><img src="static/images/ad4che_site17_evo.png" alt="AD4CHE congested-highway risk evolution" loading="lazy"/><figcaption><b>AD4CHE · risk evolution (same-lane closing).</b> Three key frames (current → mid-horizon → peak): an ego truck (~6&#8202;m/s) closes the gap to a slower truck (~3&#8202;m/s) ahead in the same lane. In congestion the meeting probability is high but the closing speed is low, so the field builds to a modest 77&#8202;J peak at the forecast meeting point (t&#8202;=&#8202;0.93&#8202;s).</figcaption></figure>
+    <div style="height:22px"></div>
+    <figure class="card"><img src="static/images/qual_compare.png" alt="Four risk readouts on one recorded InD conflict" loading="lazy"/><figcaption><b>Four readouts, one conflict, one frame.</b> All panels are the same recorded InD conflict at the same horizon step, 1.92&#8202;s ahead. <b>(a)</b> the predicted occupancy of the ego and every tracked neighbour, the shared input to all three learned readouts &mdash; every agent contributes, including oncoming traffic. <b>(b)</b> PORA spreads risk over a speed-dependent safety box anchored at the ego's planned pose. <b>(c)</b> EDRF spreads it along six kinematic maneuver modes, covering most of the roadway. <b>(d)</b> the exact-density field localizes it on the encroaching pair. Occupancy becomes risk only where the ego's own predicted occupancy coincides with a neighbour's, which is why (d) concentrates while (a) spreads. Panels hold different quantities and are normalized individually, so only the spatial structure is comparable.</figcaption></figure>
     <div style="height:22px"></div>
     <figure class="card"><img src="static/images/ad4che_site15_evo.png" alt="AD4CHE risk evolution, closing on near-static traffic" loading="lazy"/><figcaption><b>AD4CHE · risk evolution (closing on near-static traffic).</b> An ego car merging toward a near-stationary vehicle — risk peaks at 148&#8202;J (t&#8202;=&#8202;1.20&#8202;s) and stays elevated as the ego keeps closing.</figcaption></figure>
   </div>
@@ -223,7 +225,7 @@ footer a{color:var(--ink)}
         <video autoplay loop muted playsinline controls preload="metadata">
           <source src="static/videos/round_conflict.mp4" type="video/mp4" />
         </video>
-        <div class="cap"><b>Roundabout generalization.</b> The same field, retrained on rounD — best AUROC and AP among all baselines on roundabout conflicts.</div></div>
+        <div class="cap"><b>Roundabout generalization.</b> The same field, retrained on rounD — best AP among all baselines on roundabout conflicts.</div></div>
       <div class="vid"><span class="tag">rounD · roundabout</span>
         <video autoplay loop muted playsinline controls preload="metadata">
           <source src="static/videos/round_conflict2.mp4" type="video/mp4" />
@@ -261,10 +263,10 @@ footer a{color:var(--ink)}
   <div class="wrap reveal">
     <span class="eyebrow">Conflict detection</span>
     <h2 class="title">Wins where <span class="accent">kinematics break down</span>.</h2>
-    <p class="lead note">Detection against an <em>assumption-free</em> post-encroachment-time (PET) conflict label — a real recorded crossing, no constant-velocity extrapolation — vs. a handcrafted kinematic field (DSF), a TTC baseline, and PORA-style occupancy-overlap on the <em>same</em> predicted densities. Higher is better; AP is the informative metric under class imbalance. <b>Lead (s)</b> is the early-warning lead time at a 10% false-alarm rate; single-shot scalar baselines (DSF, TTC) give no temporal warning (&mdash;).</p>
+    <p class="lead note">Detection against an <em>assumption-free</em> post-encroachment-time (PET) conflict label — a real recorded crossing at &tau;&#8202;=&#8202;0.5&#8202;s, no constant-velocity extrapolation — against a TTC baseline, two published fields (<b>ADA</b>, <b>EDRF</b>) and the <b>PORA</b> readout re-implemented on the <em>same</em> predicted densities, so the comparison is between readouts rather than between occupancy generators. Higher is better; AP is the informative metric under class imbalance. <b>Warn</b> is the share of all conflicts alarmed strictly <em>before</em> the encroachment begins, at a threshold set per method so that 10% of non-conflict scenes raise an alarm — so a silent method is penalised through the denominator and a trigger-happy one through its own threshold. Bracketed is the mean warning time in seconds. Single-shot scalar measures (TTC, ADA) produce no time profile and cannot be scored on Warn (&mdash;).</p>
     <div class="tbl-wrap" style="margin-top:24px">
       <table class="merged">
-        <caption>PET conflict detection across three regimes — <b>InD</b> intersections (2,561 scenes, 7.1% conflicts), <b>AD4CHE</b> congested highway (787, 7.9%), <b>rounD</b> roundabouts (498, 27.7%). Best per column in bold.</caption>
+        <caption>PET conflict detection across three regimes — <b>InD</b> intersections (2,561 scenes, 107 conflicts, 4.2%), <b>AD4CHE</b> congested highway (787, 43, 5.5%), <b>rounD</b> roundabouts (498, 44, 8.8%). Best per column in bold.</caption>
         <thead>
           <tr>
             <th rowspan="2">Method</th>
@@ -273,36 +275,38 @@ footer a{color:var(--ink)}
             <th colspan="3" class="grp">rounD &middot; roundabout</th>
           </tr>
           <tr>
-            <th class="grp">AUROC</th><th>AP</th><th>Lead</th>
-            <th class="grp">AUROC</th><th>AP</th><th>Lead</th>
-            <th class="grp">AUROC</th><th>AP</th><th>Lead</th>
+            <th class="grp">AUROC</th><th>AP</th><th>Warn</th>
+            <th class="grp">AUROC</th><th>AP</th><th>Warn</th>
+            <th class="grp">AUROC</th><th>AP</th><th>Warn</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>DSF (handcrafted)</td>
-            <td class="grp">0.695</td><td>0.144</td><td>&mdash;</td>
-            <td class="grp">0.531</td><td>0.083</td><td>&mdash;</td>
-            <td class="grp">0.580</td><td>0.310</td><td>&mdash;</td></tr>
           <tr><td>TTC</td>
-            <td class="grp"><span class="b">0.713</span></td><td><span class="b">0.160</span></td><td>&mdash;</td>
-            <td class="grp">0.512</td><td>0.087</td><td>&mdash;</td>
-            <td class="grp">0.533</td><td>0.302</td><td>&mdash;</td></tr>
-          <tr><td>PORA-style</td>
-            <td class="grp">0.613</td><td>0.126</td><td>&minus;0.29</td>
-            <td class="grp">0.553</td><td>0.128</td><td>0.02</td>
-            <td class="grp">0.565</td><td>0.312</td><td>&minus;0.06</td></tr>
-          <tr class="ours"><td>Ours (energy)</td>
-            <td class="grp">0.658</td><td>0.118</td><td>0.07</td>
-            <td class="grp">0.582</td><td>0.142</td><td><span class="b">0.76</span></td>
-            <td class="grp">0.574</td><td>0.309</td><td>&minus;0.54</td></tr>
-          <tr class="ours"><td>Ours (prob.)</td>
-            <td class="grp">0.659</td><td>0.155</td><td><span class="b">0.22</span></td>
-            <td class="grp"><span class="b">0.617</span></td><td><span class="b">0.143</span></td><td>&minus;0.08</td>
-            <td class="grp"><span class="b">0.613</span></td><td><span class="b">0.360</span></td><td><span class="b">0.55</span></td></tr>
+            <td class="grp"><span class="b">0.789</span></td><td><span class="b">0.134</span></td><td>&mdash;</td>
+            <td class="grp">0.485</td><td>0.051</td><td>&mdash;</td>
+            <td class="grp">0.485</td><td>0.091</td><td>&mdash;</td></tr>
+          <tr><td>ADA (aggressiveness field)</td>
+            <td class="grp">0.643</td><td>0.063</td><td>&mdash;</td>
+            <td class="grp">0.455</td><td>0.051</td><td>&mdash;</td>
+            <td class="grp">0.586</td><td>0.133</td><td>&mdash;</td></tr>
+          <tr><td>EDRF</td>
+            <td class="grp">0.586</td><td>0.054</td><td>6%<small> (1.6)</small></td>
+            <td class="grp">0.547</td><td>0.063</td><td>5%<small> (2.1)</small></td>
+            <td class="grp">0.726</td><td>0.235</td><td><span class="b">27%</span><small> (1.7)</small></td></tr>
+          <tr><td>PORA readout</td>
+            <td class="grp">0.686</td><td>0.104</td><td>13%<small> (1.0)</small></td>
+            <td class="grp">0.664</td><td>0.091</td><td>12%<small> (1.4)</small></td>
+            <td class="grp"><span class="b">0.729</span></td><td>0.207</td><td>20%<small> (1.4)</small></td></tr>
+          <tr class="ours"><td>Ours</td>
+            <td class="grp">0.710</td><td>0.130</td><td><span class="b">21%</span><small> (0.5)</small></td>
+            <td class="grp"><span class="b">0.693</span></td><td><span class="b">0.135</span></td><td><span class="b">19%</span><small> (0.9)</small></td>
+            <td class="grp">0.713</td><td><span class="b">0.245</span></td><td>20%<small> (1.4)</small></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="note" style="margin-top:18px">Our field wins <b>both AUROC and AP</b> on the <span class="win">congested-highway and roundabout regimes</span> — exactly where constant-velocity kinematics break down — and beats the same-backbone occupancy baseline (PORA) everywhere. On smooth, low-speed InD intersections, motion is so constant-velocity-predictable that a kinematic TTC baseline is near-optimal; our field stays competitive there and gives the best early warning. And unlike any baseline, it also yields a probabilistic field, a physical severity, an early-warning lead, and a physically grounded counterfactual.</p>
+    <p class="note" style="margin-top:18px">The field has the best <b>AP</b> on the <span class="win">congested-highway and roundabout regimes</span> — exactly where constant-velocity kinematics break down — and warns the most conflicts before they begin on InD and AD4CHE. Between recall 0.1 and 0.3, the high-precision region a rare-event detector is actually operated in, it is the most precise method on all three datasets. On smooth, low-speed InD intersections motion is so constant-velocity-predictable that a kinematic TTC baseline is near-optimal on the ranking metrics, and the field is second there while still warning the most conflicts in time. On rounD, where conflicts clear by a wider margin, a large integration region and a present-state monitor both suffice, so PORA and EDRF close the gap. And unlike any baseline, the field also yields a probabilistic read, a physical severity in joules, and a physically grounded counterfactual.<br><br><small>EDRF is reported with one correction to its published readout, whose trajectory-relative projection assigns every cell behind a predicted path the peak amplitude of the whole tube, so the scene maximum is frequently attained on road a vehicle has already left. Removing those cells raises its InD AUROC from 0.512 to 0.586 and barely moves AD4CHE and rounD.</small></p>
+    <div style="height:26px"></div>
+    <figure class="card"><img src="static/images/pr_curves.png" alt="Precision-recall curves for every method on InD, AD4CHE and rounD" loading="lazy"/><figcaption><b>Where the methods actually differ.</b> AP compresses each curve into one number and so averages over every operating point. The curves do not. Between recall 0.1 and 0.3 &mdash; the high-precision region a rare-event detector is operated in &mdash; the field is the most precise method on all three datasets. Chance precision is each dataset's conflict rate, 4.2% / 5.5% / 8.8%, so precision is comparable across panels only relative to those rates.</figcaption></figure>
   </div>
 </section>
 
