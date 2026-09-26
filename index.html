@@ -180,7 +180,7 @@ footer a{color:var(--ink)}
   <div class="wrap reveal">
     <span class="eyebrow">Qualitative results</span>
     <h2 class="title">Risk that <span class="accent">evolves</span> over the horizon.</h2>
-    <p class="lead note">The field is shown at its peak-risk frame (intersections) and as an evolution strip (congested highway): the heat — expected collision energy in joules — is rendered on a single shared <b>logarithmic</b> scale, so the same colour means the same physical energy across every dataset. No threshold or per-dataset calibration is involved.</p>
+    <p class="note">The field is shown at its peak-risk frame (intersections) and as an evolution strip (congested highway): the heat — expected collision energy in joules — is rendered on a single shared <b>logarithmic</b> scale, so the same colour means the same physical energy across every dataset. No threshold or per-dataset calibration is involved.</p>
     <div class="grid2" style="margin-top:24px">
       <figure class="card"><img src="static/images/ind_crit_risk.png" alt="InD intersection conflict risk field" loading="lazy"/><figcaption><b>InD · head-on conflict.</b> A near-head-on crossing (closing speed 9.2&#8202;m/s): the two-model field concentrates a 252&#8202;J peak where the ego's predicted occupancy meets the crossing agent.</figcaption></figure>
       <figure class="card"><img src="static/images/ind_ncrit_risk.png" alt="InD low-speed crossing onto stopped traffic" loading="lazy"/><figcaption><b>InD · proximity &#8800; severity.</b> A low-speed turn onto a queue of stopped cars: the geometrically <em>tighter</em> near-miss (boxes momentarily touch) but only a 2.8&#8202;m/s closing speed, so the field stays modest (34&#8202;J). Energy tracks closing speed, not proximity.</figcaption></figure>
@@ -197,7 +197,7 @@ footer a{color:var(--ink)}
   <div class="wrap reveal">
     <span class="eyebrow">Animations</span>
     <h2 class="title">The field, <span class="accent">in motion</span>.</h2>
-    <p class="lead note">From one observed frame, the model forecasts a horizon of risk that plays forward as the agents advance. Ego in <span style="color:#0a9fb0;font-weight:600">cyan</span>; all surrounding agents in <span style="color:#e07a16;font-weight:600">orange</span>; the inferno heat is the expected collision energy in joules on a shared logarithmic scale.</p>
+    <p class="note">From one observed frame, the model forecasts a horizon of risk that plays forward as the agents advance. Ego in <span style="color:#0a9fb0;font-weight:600">cyan</span>; all surrounding agents in <span style="color:#e07a16;font-weight:600">orange</span>; the inferno heat is the expected collision energy in joules on a shared logarithmic scale.</p>
     <div class="grid-vid" style="margin-top:24px">
       <div class="vid"><span class="tag">InD · intersection</span>
         <video autoplay loop muted playsinline controls preload="metadata">
@@ -234,7 +234,7 @@ footer a{color:var(--ink)}
     <div style="margin-top:46px">
       <span class="eyebrow">Counterfactual</span>
       <h2 class="title">What if the ego <span class="accent">brakes</span>?</h2>
-      <p class="lead note">The same AD4CHE conflict (an ego truck closing on a slower truck), re-scored under three candidate ego maneuvers on the <em>identical</em> colorbar. Because the severity is collision kinetic energy, braking lowers it by the laws of mechanics — the risk field visibly shrinks under braking and grows under acceleration. Averaged over 20 test scenes, braking cuts the aggregated risk by <b>12.7%</b> and accelerating raises it by <b>15.5%</b> — a causal what-if query that fixed-plan occupancy methods structurally cannot answer.</p>
+      <p class="note">The same AD4CHE conflict (an ego truck closing on a slower truck), re-scored under three candidate ego maneuvers on the <em>identical</em> colorbar. Because the severity is collision kinetic energy, braking lowers it by the laws of mechanics — the risk field visibly shrinks under braking and grows under acceleration. Averaged over 20 test scenes, braking cuts the aggregated risk by <b>12.7%</b> and accelerating raises it by <b>15.5%</b> — a causal what-if query that fixed-plan occupancy methods structurally cannot answer.</p>
       <div class="grid-cf" style="margin-top:20px">
         <div class="vid"><span class="tag">Brake &times;0.7</span>
           <video autoplay loop muted playsinline controls preload="metadata">
