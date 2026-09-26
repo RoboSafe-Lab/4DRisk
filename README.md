@@ -1,7 +1,7 @@
 # 4DRisk — Project Page
 
 Project page for **4D Risk Assessment for Anticipated Safety Evaluation of Autonomous
-Vehicle Behaviors**, submitted to *Reliability Engineering & System Safety*.
+Vehicle Behaviors**.
 
 Live at <https://robosafe-lab.github.io/4DRisk/>.
 Method code: <https://github.com/RoboSafe-Lab/Riskfield>.
